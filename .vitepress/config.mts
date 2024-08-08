@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ArchiverateZ",
-  base: "/",
+  base: "/docs/",
   description: "A VitePress Site",
   markdown: {
     math: true
@@ -61,25 +61,8 @@ export default defineConfig({
             {text: '15-强化学习', link: '/aiml/ml/reinforcement-learning'},
           ]
         }
-      ],
-
-      '/deeplearning': [
-        {
-          items: [
-            {text: 'Getting Started', link: '/deeplearning/index'},
-            {text: '01-Introduction', link: '/deeplearning/01-introduction'},
-            {text: '02-Neural Networks', link: '/deeplearning/02-neuralnetworks'},
-            {text: '03-Convolutional Neural Networks', link: '/deeplearning/03-cnn'},
-            {text: '04-Recurrent Neural Networks', link: '/deeplearning/04-rnn'},
-            {text: '05-Generative Adversarial Networks', link: '/deeplearning/05-gan'},
-            {text: '06-Transformers', link: '/deeplearning/06-transformers'},
-            {text: '07-Attention Mechanism', link: '/deeplearning/07-attention'},
-            {text: '08-Optimization', link: '/deeplearning/08-optimization'},
-            {text: '09-Applications', link: '/deeplearning/09-applications'},
-            {text: '10-Tools', link: '/deeplearning/10-tools'},
-          ]
-        }
       ]
+      
     },
     // sidebar: [
     //   {
