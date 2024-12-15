@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ArchiverateZ",
-  base: "/docs/",
+  base: "/",
   description: "A VitePress Site",
   markdown: {
     math: true
