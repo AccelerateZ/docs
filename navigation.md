@@ -30,6 +30,6 @@
 
 ::: info The State of Art
 
-[The State of Art](/state-of-art/index)
+
 
 :::
