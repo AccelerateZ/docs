@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "ArchiverateZ"
   text: "A VitePress Site"
-  tagline: My great project tagline
+  tagline: Notes for Archive
   actions:
     - theme: brand
       text: Navigation

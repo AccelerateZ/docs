@@ -15,8 +15,8 @@
 
 从样本空间到标记空间存在着很多的映射，我们将每个映射称之为**概念**（concept），定义：
 
-> - 若概念$c$对任何样本$x$满足$c(x)=y$，则称$c$为**目标概念**，即最理想的映射，所有的目标概念构成的集合称为**“概念类”**，用符号$\mathcal C$表示；  
-> - 给定学习算法$\mathcal L$，它所有可能映射/概念的集合称为**“假设空间”**，由符号$\mathcal H$表示。其中单个的概念称为**“假设”**（hypothesis）；  
+> - 若概念$c$对任何样本$x$满足$c(x)=y$，则称$c$为**目标概念**，即最理想的映射，所有的目标概念构成的集合称为“**概念类**”，用符号$\mathcal C$表示；  
+> - 给定学习算法$\mathcal L$，它所有可能映射/概念的集合称为“**假设空间**”，由符号$\mathcal H$表示。其中单个的概念称为“**假设**”（hypothesis）；  
 
 - 若一个算法的假设空间包含目标概念，则称该数据集对该算法是**可分**（separable）的，亦称**一致**（consistent）的；
 - 若一个算法的假设空间不包含目标概念，则称该数据集对该算法是**不可分**（non-separable）的，或称**不一致**（non-consistent）的。
@@ -27,8 +27,7 @@
 > - **定义12.1 PAC辨识**（PAC Identify）：对$0<\epsilon, \delta < 1$，所有$c \in C$和分布$D$，若存在学习算法$L$，其输出假设$h \in H$满足$$P(E(h) \le \epsilon) \ge 1 - \delta$$等价于$E(c)=0，P\{(E(h)-E(c)) \le e\} \ge 1 - \delta$，则称学习算法$L$能从假设空间$H$中PAC识别概念类$C$（**即目标概念的有效近似**）。  
 > - **定义12.2 PAC可学习**（PAC Learnable）：令$m$表示从分布$D$中独立同分布采样得到的样例数目，$0 < \epsilon, \delta < 1$，对所有分布$D$，若存在学习算法$L$和多项式函数$\text{poly}(\cdot,\cdot,\cdot,\cdot)$，使得对于任何$m \ge \text{poly}(1/\epsilon, 1/\delta, \text{size}(x), \text{size}(c))$，$L$能从假设空间$H$中PAC识别概念类$C$，则称概念类$C$对假设空间$H$而言是PAC可学习的，又是也简称概念类$C$是PAC可学习的。  
 > - **定义12.3 PAC学习算法**（PAC Learning Algorithm）：若学习算法$L$使概念类$C$为PAC可学习的，且$L$的运行时间也是多项式函数$\text{poly}(1/\epsilon, 1/\delta, \text{size}(x), \text{size}(c))$，则称概念类$C$是高效PAC可学习（efficiently PAC learnable）的，称$L$为概念类$C$的PAC学习算法。  
-
-- **定义12.4 样本复杂度**（Sample Complexity）：满足$PAC$学习算法$L$所需的$m \ge \text{poly}(1/\epsilon, 1/\delta, \text{size}(x), \text{size}(c))$中最小的$m$称为学习算法$L$的样本复杂度。
+> - **定义12.4 样本复杂度**（Sample Complexity）：满足$PAC$学习算法$L$所需的$m \ge \text{poly}(1/\epsilon, 1/\delta, \text{size}(x), \text{size}(c))$中最小的$m$称为学习算法$L$的样本复杂度。
 
 
 上述关于PAC的几个定义层层相扣：定义12.1表达的是对于某种学习算法，如果能以一个置信度学得假设满足泛化误差的预设上限，则称该算法能PAC辨识概念类，即该算法的输出假设已经十分地逼近目标概念。定义12.2则将样本数量考虑进来，当样本超过一定数量时，学习算法总是能PAC辨识概念类，则称概念类为PAC可学习的。定义12.3将学习器运行时间也考虑进来，若运行时间为多项式时间，则称PAC学习算法。  
@@ -43,11 +42,19 @@
 可分或一致的情形指的是：**目标概念包含在算法的假设空间中**。对于目标概念，在训练集$D$中的经验误差一定为0，因此首先我们可以想到的是：不断地剔除那些出现预测错误的假设，直到找到经验误差为0的假设即为目标概念。但**由于样本集有限，可能会出现多个假设在$D$上的经验误差都为0，因此问题转化为：需要多大规模的数据集$D$才能让学习算法以置信度的概率从这些经验误差都为0的假设中找到目标概念的有效近似**。
 
 > 对于算法的某个输出假设泛化误差大于$e$，且在数据集上表现完美的概率： 
-> $$\begin{aligned} P\left((h(x_1)=y_1) \wedge \ldots \wedge \left(h(x_m)=y_m\right)\right) 
-> &=(1-P(h(x) \neq y))^m \\ 
-> &<(1-\epsilon)^m \end{aligned}$$所有这样的假设出现的概率，实际上中间有省略，假设有$k$个泛化误差大于$e$的假设，$P(h \in H:\ldots) < k(1 -e)^m < |H|(1-e)^m$：$$\begin{aligned} P(h \in H:E(h) > \epsilon \wedge \hat{E}(h)=0) 
-> & < |H|(1-\epsilon)^m \\
-> & < |H|e^{-m\epsilon} \end{aligned}$$令上式不大于$\delta$（即目标概念的有效近似），即$$|H|e^{-m\epsilon} \le \delta$$可得$$m \ge \frac{1}{\epsilon} (\ln |H| + \ln \frac{1}{\delta})$$
+> $$
+> P((h(x_1)=y_1) \wedge \ldots \wedge (h(x_m)=y_m)) 
+> =(1-P(h(x) \neq y))^m<(1-\epsilon)^m
+> $$
+> 所有这样的假设出现的概率，实际上中间有省略，假设有$k$个泛化误差大于$e$的假设，$P(h \in H:\ldots) < k(1 -e)^m < |H|(1-e)^m$：
+> $$
+> P(h \in H:E(h) > \epsilon \wedge \hat{E}(h)=0) 
+> < |H|(1-\epsilon)^m < |H|e^{-m\epsilon}
+> $$
+> 令上式不大于$\delta$（即目标概念的有效近似），即$|H|e^{-m\epsilon} \le \delta$，可得
+> $$
+> m \ge \frac{1}{\epsilon} (\ln |H| + \ln \frac{1}{\delta})
+> $$
 
 
 通过上式可以得知：**对于可分情形的有限假设空间，目标概念都是PAC可学习的，即当样本数量满足上述条件之后，在与训练集一致的假设中总是可以在$1-\delta$概率下找到目标概念的有效近似。**
@@ -64,9 +71,11 @@
 这时候便要用到**Hoeffding不等式**，以下给出单个假设的误差概率：
 
 $$
-P(\widehat{E}(h)-E(h) \geqslant \epsilon) \leqslant \exp (-2 m \epsilon^2) \\ 
-P(E(h)-\widehat{E}(h) \geqslant \epsilon) \leqslant \exp (-2 m \epsilon^2) \\ 
-P(|E(h)-\widehat{E}(h)| \geqslant \epsilon) \leqslant 2 \exp (-2 m \epsilon^2)
+\begin{aligned}
+	P(\widehat{E}(h)-E(h) \geqslant \epsilon) \leqslant \exp (-2 m \epsilon^2) \\ 
+	P(E(h)-\widehat{E}(h) \geqslant \epsilon) \leqslant \exp (-2 m \epsilon^2) \\ 
+	P(|E(h)-\widehat{E}(h)| \geqslant \epsilon) \leqslant 2 \exp (-2 m \epsilon^2)
+\end{aligned}
 $$
 
 对于假设空间中的所有假设，出现泛化误差与经验误差之差大于e的概率和为：
@@ -76,7 +85,10 @@ $$
 
 因此，令不等式的右边小于（等于）$\delta$，便可以求出满足泛化误差与经验误差相差小于$e$所需的最少样本数，同时也可以求出泛化误差界。
 $$
-m \geqslant \frac{1}{2 \epsilon^2}(\ln |H|+\ln (1 / \delta)) \\
+m \geqslant \frac{1}{2 \epsilon^2}(\ln |H|+\ln (1 / \delta))
+$$
+
+$$
 P(|E(h)-\widehat{E}(h)| \leqslant \sqrt{\frac{\ln |H|+\ln (2 / \delta)}{2 m}}) \geqslant 1-\delta
 $$
 
@@ -86,14 +98,14 @@ $$
 现实中的学习任务通常都是无限假设空间，例如d维实数域空间中所有的超平面等，因此要对此种情形进行可学习研究，需要度量**假设空间的复杂度**。这便是**VC维**（Vapnik-Chervonenkis dimension）的来源。在介绍VC维之前，需要引入两个概念：
 
 > - **增长函数**：对于给定数据集D，假设空间中的每个假设都能对数据集的样本赋予标记，因此一个假设对应着一种打标结果，不同假设对D的打标结果可能是相同的，也可能是不同的。随着样本数量m的增大，假设空间对样本集D的打标结果也会增多，增长函数则表示假设空间对m个样本的数据集D打标的最大可能结果数，因此**增长函数描述了假设空间的表示能力与复杂度。** 
-> 
+>
 > $$
 > \displaystyle \Pi_{\mathcal{H}}(m)=\max _{\{x_1, \ldots, x_m\} \subseteq X}\left|\left\{\left(h(x_1), \ldots, h(x_m)\right) | h \in H\right\}\right|
 > $$
-> 
+>
 > 对于不同的数据集，增长函数可能不相同。  
+>
 > - **打散**：例如对二分类问题来说，m个样本最多有2^m个可能结果，每种可能结果称为一种**“对分”**，若假设空间能实现数据集D的所有对分，则称数据集能被该假设空间打散。  
-
 
 **因此尽管假设空间是无限的，但它对特定数据集打标的不同结果数是有限的，假设空间的VC维正是它能打散的最大数据集大小**。通常这样来计算假设空间的VC维：若存在大小为$d$的数据集能被假设空间打散，但不存在任何大小为$d+1$的数据集能被假设空间打散，则其VC维为$d$。 
 ![12.png](https://i.loli.net/2018/10/18/5bc855bb20c1e.png)
@@ -111,17 +123,19 @@ $$
 
 在有限假设空间中，根据**Hoeffding**不等式便可以推导得出学习算法的泛化误差界；但在无限假设空间中，由于假设空间的大小无法计算，只能通过增长函数来描述其复杂度，因此无限假设空间中的泛化误差界需要引入增长函数。  
 
+
+
 > **定理12.2** 对假设空间$H,m \in N, 0 < \epsilon < 1$和任意$h \in H$，有
 > $$
 > P(|E(h)-\widehat{E}(h)|>\epsilon) \leqslant 4 \Pi_{H}(2 m) \exp \left(-\frac{m \epsilon^2}{8}\right)
 > $$
-> 
+>
 > 代入定理便可得无限假设空间的泛化误差界：
-> 
+>
 > $$
 > P(E(h)-\widehat{E}(h) \leqslant \sqrt{\frac{\displaystyle 8 d \ln \frac{2 e m}{d}+8 \ln \frac{4}{\delta}}{m}}) \geqslant 1-\delta
 > $$
-> 
+>
 > 上界（多余此数目则可学到）：
 > $$
 > m \ge\frac{1}{\epsilon}\left(4 \log_{2}(2 / \delta)+8 V C(H) \log _{2}(13 / \epsilon)\right)
@@ -139,14 +153,18 @@ $$
 
 稳定性考察的是当算法的输入发生变化时，输出是否会随之发生较大的变化，输入的数据集$D$有以下两种变化：
 
-- $D^{\backslash i}$表示移除$D$中第$i$个样例得到的集合：$$D^{\backslash i}=\{z_1, z_2, \ldots, z_{i-1}, z_{i+1}, \ldots, z_m\}$$
-- $D^i$表示替换$D$中第$i$个样例得到的集合：$$D^i=\{z_1, z_2, \ldots, z_{i-1}, z'_i ,z_{i+1}, \ldots, z_m\}$$，其中$z'_i=(x'_i,y'_i),x'_i$服从分布$D$并独立于$D$  
+- $D^{i*}$表示移除$D$中第$i$个样例得到的集合：$D^{i*}=\{z_1, z_2, \ldots, z_{i-1}, z_{i+1}, \ldots, z_m\}$；
+- $D^i$表示替换$D$中第$i$个样例得到的集合：$D^{i}=\{z_1, z_2, \ldots, z_{i-1}, z' , z_{i+1}, \ldots, z_m\}$，其中$z'_i=(x'_i,y'_i)$，$x'_i$服从分布$D$并独立于$D$。
 
-若对数据集中的任何样本$z$，满足：$$|\ell(L_D, z)-\ell(L_{D^{\backslash i}}, z)| \le \beta, \quad i=1,2, \ldots, m$$即原学习器和剔除一个样本后生成的学习器对$z$的损失之差保持$\beta$稳定，称学习器关于损失函数满足**$\beta$-均匀稳定性**。同时若损失函数有上界，即原学习器对任何样本的损失函数不超过$M$，则有如下定理：
+若对数据集中的任何样本$z$，满足：$|\ell(L_D, z)-\ell(L_{D^{i*}}, z)| \le \beta, \quad i=1,2, \ldots, m|$，即原学习器和剔除一个样本后生成的学习器对$z$的损失之差保持$\beta$稳定，称学习器关于损失函数满足**β-均匀稳定性**。同时若损失函数有上界，即原学习器对任何样本的损失函数不超过$M$，则有如下定理：
 $$
-\ell(L, D) \le \hat{\ell}(L, D)+2 \beta+(4 m \beta+M) \sqrt{\frac{\ln (1 / \delta)}{2 m}} \\
+\ell(L, D) \le \hat{\ell}(L, D)+2 \beta+(4 m \beta+M) \sqrt{\frac{\ln (1 / \delta)}{2 m}}
+$$
+
+$$
 \ell(L, D) \le {\ell}_{loo}(L, D)+\beta+(4 m \beta+M) \sqrt{\frac{\ln (1 / \delta)}{2 m}}
 $$
+
 其中$\ell(L,D)$为泛化损失，$\hat{\ell}(L, D)$为经验损失，${\ell}_{loo}(L, D)$为留一损失。
 
 

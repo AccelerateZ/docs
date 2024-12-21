@@ -137,21 +137,21 @@ $$
     T(n)=\Theta(n\log n).
 $$
 
-1. 代码实现：
+代码实现：
 
-   ```C++
-   template <typename T> void Vector<T>::mergeSort( Rank lo, Rank hi ) {
-       if ( hi - lo < 2 ) return; //单元素区间自然有序，否则...
-       Rank mi = (lo + hi) >> 1; //以中点为界
-       mergeSort( lo, mi ); //对前半段排序
-       mergeSort( mi, hi ); //对后半段排序
-       merge(lo,mi,hi);//归并
-   }
-   ```
+```C++
+template <typename T> void Vector<T>::mergeSort( Rank lo, Rank hi ) {
+    if ( hi - lo < 2 ) return; //单元素区间自然有序，否则...
+    Rank mi = (lo + hi) >> 1; //以中点为界
+    mergeSort( lo, mi ); //对前半段排序
+    mergeSort( mi, hi ); //对后半段排序
+    merge(lo,mi,hi);//归并
+}
+```
 
-   
 
-3. 二路归并：有序序列合二为一，保持有序。
+
+1. 二路归并：有序序列合二为一，保持有序。
 
    1. 若有两个数组a[m], b[n], 和一个合并数组c[m+n], 让i=0, j=0分别为a, b两个数组的下标遍历。哪一个下标对应的元素小，就将其放入c数组中，并将其值自增。重复执行上述操作，直至一方遍历至数组结束。剩下的未遍历的元素必然有序，将其全部放入c数组中。
 

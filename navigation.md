@@ -8,10 +8,28 @@
 
 :::
 
-### AI & ML
+### Machine Learning and Deep Learning
 
-::: danger Artificial Intelligence and Machine Learning
+::: danger Artificial Intelligence, Machine Learning and Deep Learning
 
-[机器学习](/aiml/ml/index)
+[机器学习](/machine-deep/ml/index)
+
+[INFSCI0310](/machine-deep/infsci0310/index)
+
+:::
+
+### Mathematics
+
+::: warning Mathematics
+
+[数学](/math/index)
+
+:::
+
+### The State of Art
+
+::: info The State of Art
+
+[The State of Art](/state-of-art/index)
 
 :::

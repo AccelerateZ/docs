@@ -13,7 +13,11 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'DSA', link: '/dsa/index'},
-      { text: 'ML', link: '/aiml/ml/index'},
+      { text: 'ML & DL', items: [
+        { text: 'Machine Learning', link: '/machine-deep/ml/index' },
+        // { text: 'Deep Learning', link: '/machine-deep/dl/index' },
+        { text: 'INFSCI0310', link: '/machine-deep/infsci0310/index' },
+      ]},
       { text: 'Examples', link: '/markdown-examples' }
     ],
     
@@ -23,42 +27,58 @@ export default defineConfig({
           items: [
             {text: 'Getting Started', link: '/dsa/index'},
             {text: 'Exercises', link: '/dsa/exercise'},
-            {text: '01-Beginning', link: '/dsa/01-beginning'},
-            {text: '02-Vector', link: '/dsa/02-vector'},
-            {text: '03-List', link: '/dsa/03-list'},
-            {text: '04-Stack and Queue', link: '/dsa/04-stackqueue'},
-            {text: '05-Sorting', link: '/dsa/05-sorting'},
-            {text: '06-Tree', link: '/dsa/06-tree'},
-            {text: '07-Advanced Search Tree', link: '/dsa/07-astree'},
-            {text: '08-Tree Like DS', link: '/dsa/08-treelike'},
-            {text: '09-Hash', link: '/dsa/09-hash'},
-            {text: '10-Heap', link: '/dsa/10-heap'},
-            {text: '11-String', link: '/dsa/11-string'},
-            {text: '12-Graph', link: '/dsa/12-graph'},
-            {text: '13-Search', link: '/dsa/13-search'},
-            {text: '14-Divide and Conquer', link: '/dsa/14-dac'},
+            {text: '01-Introduction', link: '/dsa/introduction'},
+            {text: '02-Array and Vector', link: '/dsa/array-and-vector'},
+            {text: '03-List', link: '/dsa/list-and-node'},
+            {text: '04-Stack and Queue', link: '/dsa/stack-and-queue'},
+            {text: '05-Sorting', link: '/dsa/sorting'},
+            {text: '06-Tree', link: '/dsa/tree'},
+            {text: '07-Advanced Search Tree', link: '/dsa/advanced-search-tree'},
+            {text: '08-Tree Like DS', link: '/dsa/tree-like-structures'},
+            {text: '09-Hash', link: '/dsa/hash-and-collusion'},
+            {text: '10-Heap', link: '/dsa/heap-and-huffman-tree'},
+            {text: '11-String', link: '/dsa/string'},
+            {text: '12-Graph', link: '/dsa/graph'},
+            {text: '13-Search', link: '/dsa/search'},
+            {text: '14-Divide and Conquer', link: '/dsa/divide-and-conquer'},
           ]
         }
       ],
       
-      '/aiml/ml': [
+      '/machine-deep/ml': [
         {
           items: [
-            {text: '01-绪论', link: '/aiml/ml/index'},
-            {text: '02-模型评估与选择', link: '/aiml/ml/model-evaluation-selection'},
-            {text: '03-线性模型', link: '/aiml/ml/linear-model'},
-            {text: '04-决策树', link: '/aiml/ml/decision-tree'},
-            {text: '05-神经网络', link: '/aiml/ml/neural-network'},
-            {text: '06-支持向量机', link: '/aiml/ml/svm'},
-            {text: '07-贝叶斯分类器', link: '/aiml/ml/bayesian-classifier'},
-            {text: '08-集成学习', link: '/aiml/ml/ensemble-learning'},
-            {text: '09-聚类', link: '/aiml/ml/clustering'},
-            {text: '10-降维与度量值学习', link: '/aiml/ml/dimensionality-reduction'},
-            {text: '11-特征选择与稀疏学习', link: '/aiml/ml/feature-selection'},
-            {text: '12-计算学习理论', link: '/aiml/ml/computational-learning-theory'},
-            {text: '13-半监督学习', link: '/aiml/ml/semi-supervised-learning'},
-            {text: '14-概率图模型', link: '/aiml/ml/probabilistic-graphical-model'},
-            {text: '15-强化学习', link: '/aiml/ml/reinforcement-learning'},
+            {text: '01-绪论', link: '/machine-deep/ml/index'},
+            {text: '02-模型评估与选择', link: '/machine-deep/ml/model-evaluation-selection'},
+            {text: '03-线性模型', link: '/machine-deep/ml/linear-model'},
+            {text: '04-决策树', link: '/machine-deep/ml/decision-tree'},
+            {text: '05-神经网络', link: '/machine-deep/ml/neural-network'},
+            {text: '06-支持向量机', link: '/machine-deep/ml/svm'},
+            {text: '07-贝叶斯分类器', link: '/machine-deep/ml/bayesian-classifier'},
+            {text: '08-集成学习', link: '/machine-deep/ml/ensemble-learning'},
+            {text: '09-聚类', link: '/machine-deep/ml/clustering'},
+            {text: '10-降维与度量值学习', link: '/machine-deep/ml/dimensionality-reduction'},
+            {text: '11-特征选择与稀疏学习', link: '/machine-deep/ml/feature-selection'},
+            {text: '12-计算学习理论', link: '/machine-deep/ml/computational-learning-theory'},
+            {text: '13-半监督学习', link: '/machine-deep/ml/semi-supervised-learning'},
+            {text: '14-概率图模型', link: '/machine-deep/ml/probabilistic-graphical-model'},
+            {text: '15-强化学习', link: '/machine-deep/ml/reinforcement-learning'},
+          ]
+        }
+      ],
+
+      '/machine-deep/infsci0310': [
+        {
+          items: [
+            {text: '01-Intro to Information Science', link: '/machine-deep/infsci0310/index'},
+            {text: '02-Information Representation', link: '/machine-deep/infsci0310/info-representation'},
+            {text: '03-Gradient Descent', link: '/machine-deep/infsci0310/gradient-descent'},
+            {text: '04-Optimization', link: '/machine-deep/infsci0310/optimization'},
+            {text: '05-Statistics Inference', link: '/machine-deep/infsci0310/statistics-inference'},
+            {text: '06-Stochastic, Simulation and Sampling', link: '/machine-deep/infsci0310/stochastic-simulation-sampling'},
+            {text: '07-Linear Regression', link: '/machine-deep/infsci0310/linear-regression'},
+            {text: '08-Python Basics', link: '/machine-deep/infsci0310/python-basics'},
+            {text: '09-P-and-NP', link: '/machine-deep/infsci0310/p-and-np'}
           ]
         }
       ]
