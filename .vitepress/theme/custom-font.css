@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../assets/JetBrainsMonoNL-Regular.ttf') format('truetype');
+}
+
+:root {
+    --vp-font-family-mono: "JetBrainsMono", "Fira Code", "JetBrains Mono", "Space Mono", "IBM Plex Mono", "Courier New", monospace;
+    }
