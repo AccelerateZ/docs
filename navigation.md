@@ -14,6 +14,8 @@
 
 [机器学习](/machine-deep/ml/index)
 
+[深度学习](/machine-deep/dl/index)
+
 [INFSCI0310](/machine-deep/infsci0310/index)
 
 :::

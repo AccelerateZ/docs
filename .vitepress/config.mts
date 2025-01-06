@@ -15,7 +15,7 @@ export default defineConfig({
       { text: 'DSA', link: '/dsa/index'},
       { text: 'ML & DL', items: [
         { text: 'Machine Learning', link: '/machine-deep/ml/index' },
-        // { text: 'Deep Learning', link: '/machine-deep/dl/index' },
+        { text: 'Deep Learning', link: '/machine-deep/dl/index' },
         { text: 'INFSCI0310', link: '/machine-deep/infsci0310/index' },
       ]},
       { text: 'Examples', link: '/markdown-examples' }
@@ -63,6 +63,14 @@ export default defineConfig({
             {text: '13-半监督学习', link: '/machine-deep/ml/semi-supervised-learning'},
             {text: '14-概率图模型', link: '/machine-deep/ml/probabilistic-graphical-model'},
             {text: '15-强化学习', link: '/machine-deep/ml/reinforcement-learning'},
+          ]
+        }
+      ],
+      '/machine-deep/dl': [
+        {
+          items: [
+            {text: '01-Overview', link: '/machine-deep/dl/index'},
+            {text: 'RNN', link: '/machine-deep/dl/recurrent-neural-network'},
           ]
         }
       ],
