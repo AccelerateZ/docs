@@ -63,6 +63,8 @@ export default defineConfig({
             {text: '13-半监督学习', link: '/machine-deep/ml/semi-supervised-learning'},
             {text: '14-概率图模型', link: '/machine-deep/ml/probabilistic-graphical-model'},
             {text: '15-强化学习', link: '/machine-deep/ml/reinforcement-learning'},
+            {text: '数据分析 - 监督学习', link: '/machine-deep/ml/supervised-learning'},
+            {text: '数据分析 - 无监督学习', link: '/machine-deep/ml/unsupervised-learning'},
           ]
         }
       ],
