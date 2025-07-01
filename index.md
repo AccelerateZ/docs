@@ -1,3 +1,4 @@
+---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
@@ -20,3 +21,4 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+---
